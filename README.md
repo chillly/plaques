@@ -1,7 +1,7 @@
 plaques
 =======
 
-Demo of Leaflet 7.
+Demo of Leaflet v0.7.
 
 Shows some useful Leaflet techniques:
 
