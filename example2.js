@@ -86,5 +86,5 @@ function setIcon(feature,ll) {
 		plq=L.marker(ll, {icon: blueicon});
 	}
 	plq.bindPopup(feature.properties.plaquedesc);
-	return p;
+	return plq;
 }
