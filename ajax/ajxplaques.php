@@ -37,9 +37,21 @@ try {
 	sendajax($ajxres);
 }
 
+//$stmt = $db->prepare("SELECT * FROM hbtarget WHERE lon>=:left AND lon<=:right AND lat>=:bottom AND lat<=:top ORDER BY targetind");
+//$stmt->bindParam(':left', $left, PDO::PARAM_STR);
+//$stmt->bindParam(':right', $right, PDO::PARAM_STR);
+//$stmt->bindParam(':bottom', $bottom, PDO::PARAM_STR);
+//$stmt->bindParam(':top', $top, PDO::PARAM_STR);
+//$stmt->execute();
+
+
 try {
-	$sql="SELECT plaqueid,lat,lon,plaquedesc,colour,imageid FROM plaques";
+	$sql="SELECT plaqueid,lat,lon,plaquedesc,colour,imageid FROM plaques WHERE lon>=:left AND lon<=:right AND lat>=:bottom AND lat<=:top";
 	$stmt = $db->prepare($sql);
+	$stmt->bindParam(':left', $left, PDO::PARAM_STR);
+	$stmt->bindParam(':right', $right, PDO::PARAM_STR);
+	$stmt->bindParam(':bottom', $bottom, PDO::PARAM_STR);
+	$stmt->bindParam(':top', $top, PDO::PARAM_STR);
 	$stmt->execute();
 } catch(PDOException $e) {
 	print "db error ".$e->getCode()." ".$e->getMessage();
